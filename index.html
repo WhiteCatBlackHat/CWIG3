@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>CW的第3个增量游戏(时间增量)</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <script src="game.js"></script>
+    <script src="bigNum.js"></script>
+    <script src="UI.js"></script>
+    <script src="bigNum_compare.js"></script>
+    <script src="accelerators.js"></script>
+    <script src="saves.js"></script>
+</head>
+<body>
+    <div class="header">
+        <h1>CWIG3</h1>
+		<p>你有 <span id="time">0</span> 秒.</p>
+    </div>
+    <div class="main">
+        <div class="sidebar-left">
+            <p><strong>导航栏</strong></p>
+            <p><button onclick="show('accelerators')">时间加速器</button></p>
+            <p><button onclick="show('options')">选项</button></p>
+            <p><button onclick="show('others')">杂项</button></p>
+        </div>
+        <div class="container" id="accelerators">
+            <!-- accelerate /əkˈseləreɪt/ v. 加速, 使加快, 使变快 -->
+			<p><button onclick="maxAllAccelerators()">全部购买最大</button></p>
+            <p><button onclick="buyAccelerator(0)">购买</button> 一阶时间加速器 数量: <span id="number-accelerator1">0</span> 价格: <span id="price-accelerator1">0</span> 秒 倍率: <span id="speed-accelerator1">0</span></p>
+            <p><button onclick="buyAccelerator(1)">购买</button> 二阶时间加速器 数量: <span id="number-accelerator2">0</span> 价格: <span id="price-accelerator2">0</span> 秒 倍率: <span id="speed-accelerator2">0</span></p>
+            <p><button onclick="buyAccelerator(2)">购买</button> 三阶时间加速器 数量: <span id="number-accelerator3">0</span> 价格: <span id="price-accelerator3">0</span> 秒 倍率: <span id="speed-accelerator3">0</span></p>
+            <p><button onclick="buyAccelerator(3)">购买</button> 四阶时间加速器 数量: <span id="number-accelerator4">0</span> 价格: <span id="price-accelerator4">0</span> 秒 倍率: <span id="speed-accelerator4">0</span></p>
+            <p><button onclick="buyAccelerator(4)">购买</button> 五阶时间加速器 数量: <span id="number-accelerator5">0</span> 价格: <span id="price-accelerator5">0</span> 秒 倍率: <span id="speed-accelerator5">0</span></p>
+            <p><button onclick="buyAccelerator(5)">购买</button> 六阶时间加速器 数量: <span id="number-accelerator6">0</span> 价格: <span id="price-accelerator6">0</span> 秒 倍率: <span id="speed-accelerator6">0</span></p>
+            <p><button onclick="buyAccelerator(6)">购买</button> 七阶时间加速器 数量: <span id="number-accelerator7">0</span> 价格: <span id="price-accelerator7">0</span> 秒 倍率: <span id="speed-accelerator7">0</span></p>
+            <p><button onclick="buyAccelerator(7)">购买</button> 八阶时间加速器 数量: <span id="number-accelerator8">0</span> 价格: <span id="price-accelerator8">0</span> 秒 倍率: <span id="speed-accelerator8">0</span></p>
+        </div>
+        <div class="container" id="options">
+            <p><button onclick="localStorage.setItem( 'CWIG3-player-data', saveData() )">保存存档</button></p>
+            <p><button onclick="readData( localStorage.getItem('CWIG3-player-data') )">读取存档</button></p>
+			<p>
+                <button onclick="document.getElementById('output-save-text').value = saveData()">以文本形式导出存档</button> 
+                (文本形式的存档将出现在下方文本框内)<br/>
+                <input type="textbox" id="output-save-text"></input>
+            </p>
+			<p>
+                <button onclick="readData( document.getElementById('output-save-text').value )">以文本形式导入存档</button> 
+                (请先在下方文本框内输入文本形式的存档)<br/>
+                <input type="textbox" id="input-save-text"></input> 
+            </p>
+        </div>
+        <div class="container" id="others">
+            <p>
+                CWIG3(CW's Incremental Game 3, CW 的第 3 个增量游戏), 又名时间增量.
+            </p>
+			<p>
+				更新日志: 
+				<button onclick="document.getElementById('update-data').hidden=false">展开</button>
+				<button onclick="document.getElementById('update-data').hidden=true">收起</button>
+			</p>
+			<div id="update-data">
+				<p>v2.1 2025.02.23 增加了以文本形式导入/导出存档的功能</p>
+				<p>v2.0 2025.02.23 增加了存读档功能</p>
+				<p>v1.7 2025.02.23 更新了UI</p>
+				<p>v1.6 2025.02.23 增加了全部购买最大按钮</p>
+				<p>v1.5 2025.02.23 修改了时间加速器的价格</p>
+				<p>v1.4 2025.02.23 修改了时间加速器的倍率</p>
+				<p>v1.3 2025.02.23 更新了UI</p>
+				<p>v1.2 2025.02.23 修改了时间加速器的价格</p>
+				<p>v1.1 2025.02.22 修改了时间加速器的价格</p>
+				<p>v1.0 2025.02.22 增加了时间加速器</p>
+				<p>v0.1 2025.02.22 更新了UI</p>
+				<p>v0.0 2025.02.20 制作了初始的界面</p>
+			</div>
+        </div>
+    </div>
+</body>
+</html>

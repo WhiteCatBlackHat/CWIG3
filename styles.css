@@ -1,0 +1,66 @@
+body {
+    background-color: #f2f2f2; /* 设置页面的背景颜色为浅灰色 */
+    font-family: Arial, sans-serif; /* 设置页面的文字字体为Arial，如果Arial不可用，则使用无衬线字体 */
+    font-size: 1em; /* 设置页面的文字大小为1em */
+    line-height: 1.5; /* 设置页面的文字行高为1.5倍字体大小，使文字更易读 */
+    display: flex; /* 使用Flexbox布局模型 */
+    flex-direction: column; /* 排列方式 */
+}
+.main {
+    display: flex; /* 使用Flexbox布局模型 */
+    flex-direction: row; /* 排列方式 */
+}
+.container,.sidebar-left,.header {
+    margin: 10px; /* 设置容器的外边距 */
+    padding: 20px 25px 20px; /* 设置容器的内边距 */
+    background-color: #fff; /* 设置容器的背景颜色为白色 */
+    box-shadow: 0 0 10px rgba(0,0,0,0.1); /* 设置容器的阴影效果 */
+    border-radius: 10px; /* 设置容器的圆角半径为10像素 */
+    transition: transform 0.3s; /* 设置transform属性的变化过渡时间为0.3秒 */
+}
+.header {
+    width: auto; /* 设置容器的宽度 */
+    max-width: 820px; /* 设置容器的最大宽度 */
+}
+.container {
+    width: 80%;
+    max-width: 600px; /* 设置容器的最大宽度 */
+}
+.container:hover,.sidebar-left:hover,.header:hover {
+    transform: scale(1.02); /* 放大容器 */
+    box-shadow: 0 0 15px rgba(0,0,0,0.2); /* 设置容器的阴影效果 */
+}
+h1 {
+    margin: auto auto 10px;
+}
+.sidebar-left {
+    width: 20%;
+    max-width: 150px;
+}
+strong {
+    font-size: large;
+}
+button {
+	margin: 2px;
+	padding: 5px 15px;
+	border: none;
+	border-radius: 4px;
+	background-color: #007bff;
+	color: white;
+	font-size: 16px;
+	cursor: pointer;
+	transition: background-color 0.3s;
+}
+button:hover {
+	background-color: #0056b3;
+}
+input[type="textbox"] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    background-color: #f8f8f8;
+    font-size: 16px;
+}
