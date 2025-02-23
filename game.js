@@ -20,9 +20,15 @@ function refresh() {
     const timeSpan = document.getElementById("time");
     timeSpan.textContent = expToStr(game.time);
     for(let i = 0; i < game.accelerators.number.length; i++) {
+        const buyButton = document.getElementById('buy-accelerator' + (i + 1));
         const numSpan = document.getElementById('number-accelerator' + (i + 1));
         const priceSpan = document.getElementById('price-accelerator' + (i + 1));
         const speedSpan = document.getElementById('speed-accelerator' + (i + 1));
+        if(geq(game.time, game.accelerators.price[i])) {
+            buyButton.disabled = false;
+        } else {
+            buyButton.disabled = true;
+        }
         numSpan.textContent = expToStr(game.accelerators.number[i]);
         priceSpan.textContent = expToStr(game.accelerators.price[i]);
         speedSpan.textContent = expToStr(game.accelerators.speed[i]);

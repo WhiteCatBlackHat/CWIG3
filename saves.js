@@ -17,10 +17,15 @@ function readObj(arr, index) {
 	return new bigNum( parseFloat(arr[index]), parseFloat(arr[index + 1]) );
 }
 function readData(dataString) {
-	if(typeof(dataString) != 'string') {
-		alert('Êı¾İÀàĞÍ´íÎó!');
+	if(typeof(dataString) != 'string' || dataString.length == 0) {
+		alert('æ•°æ®ä¸åˆæ³•!');
+		return;
 	}
 	const arr = atob( dataString ).split(' ');
+	if(arr.length < 6 * game.accelerators.number.length + 2) {
+		alert('æ•°æ®ä¸åˆæ³•!');
+		return;
+	}
 	game.time = readObj(arr, 0);
 	for(let i = 0; i < game.accelerators.number.length; i++) {
 		game.accelerators.number[i] = readObj(arr, 6 * i + 2);
