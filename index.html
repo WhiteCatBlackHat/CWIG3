@@ -2,62 +2,72 @@
 <html>
 <head>
 	<title>CW的第3个增量游戏(时间增量)</title>
-    <link rel="stylesheet" type="text/css" href="styles.css">
-    <script src="game.js"></script>
-    <script src="bigNum.js"></script>
-    <script src="UI.js"></script>
-    <script src="bigNum_compare.js"></script>
-    <script src="accelerators.js"></script>
-    <script src="saves.js"></script>
+	<link rel="stylesheet" type="text/css" href="styles.css">
+	<script src="game.js"></script>
+	<script src="bigNum.js"></script>
+	<script src="UI.js"></script>
+	<script src="bigNum_compare.js"></script>
+	<script src="accelerators.js"></script>
+	<script src="saves.js"></script>
+	<script src="upgrades.js"></script>
 </head>
 <body>
-    <div class="header">
-        <h1>CWIG3</h1>
+	<div class="header">
+		<h1>CWIG3</h1>
 		<p>你有 <span id="time">0</span> 秒.</p>
-    </div>
-    <div class="main">
-        <div class="sidebar-left">
-            <p><strong>导航栏</strong></p>
-            <p><button onclick="show('accelerators')">时间加速器</button></p>
-            <p><button onclick="show('options')">选项</button></p>
-            <p><button onclick="show('others')">杂项</button></p>
-        </div>
-        <div class="container" id="accelerators">
-            <!-- accelerate /əkˈseləreɪt/ v. 加速, 使加快, 使变快 -->
+	</div>
+	<div class="main">
+		<div class="sidebar-left">
+			<p><strong>导航栏</strong></p>
+			<p><button onclick="show('accelerators')">时间加速器</button></p>
+			<p><button onclick="show('upgrades')">时间升级</button></p>
+			<p><button onclick="show('options')">选项</button></p>
+			<p><button onclick="show('others')">杂项</button></p>
+		</div>
+		<div class="container" id="accelerators">
+			<!-- accelerate /əkˈseləreɪt/ v. 加速, 使加快, 使变快 -->
 			<p><button onclick="maxAllAccelerators()">全部购买最大</button></p>
-            <p><button id="buy-accelerator1" onclick="buyAccelerator(0)">购买</button> 一阶时间加速器 数量: <span id="number-accelerator1">0</span> 价格: <span id="price-accelerator1">0</span> 秒 倍率: <span id="speed-accelerator1">0</span></p>
-            <p><button id="buy-accelerator2" onclick="buyAccelerator(1)">购买</button> 二阶时间加速器 数量: <span id="number-accelerator2">0</span> 价格: <span id="price-accelerator2">0</span> 秒 倍率: <span id="speed-accelerator2">0</span></p>
-            <p><button id="buy-accelerator3" onclick="buyAccelerator(2)">购买</button> 三阶时间加速器 数量: <span id="number-accelerator3">0</span> 价格: <span id="price-accelerator3">0</span> 秒 倍率: <span id="speed-accelerator3">0</span></p>
-            <p><button id="buy-accelerator4" onclick="buyAccelerator(3)">购买</button> 四阶时间加速器 数量: <span id="number-accelerator4">0</span> 价格: <span id="price-accelerator4">0</span> 秒 倍率: <span id="speed-accelerator4">0</span></p>
-            <p><button id="buy-accelerator5" onclick="buyAccelerator(4)">购买</button> 五阶时间加速器 数量: <span id="number-accelerator5">0</span> 价格: <span id="price-accelerator5">0</span> 秒 倍率: <span id="speed-accelerator5">0</span></p>
-            <p><button id="buy-accelerator6" onclick="buyAccelerator(5)">购买</button> 六阶时间加速器 数量: <span id="number-accelerator6">0</span> 价格: <span id="price-accelerator6">0</span> 秒 倍率: <span id="speed-accelerator6">0</span></p>
-            <p><button id="buy-accelerator7" onclick="buyAccelerator(6)">购买</button> 七阶时间加速器 数量: <span id="number-accelerator7">0</span> 价格: <span id="price-accelerator7">0</span> 秒 倍率: <span id="speed-accelerator7">0</span></p>
-            <p><button id="buy-accelerator8" onclick="buyAccelerator(7)">购买</button> 八阶时间加速器 数量: <span id="number-accelerator8">0</span> 价格: <span id="price-accelerator8">0</span> 秒 倍率: <span id="speed-accelerator8">0</span></p>
-        </div>
-        <div class="container" id="options">
-            <p><button onclick="localStorage.setItem( 'CWIG3-player-data', saveData() )">保存存档</button></p>
-            <p><button onclick="readData( localStorage.getItem('CWIG3-player-data') )">读取存档</button></p>
+			<p><button id="buy-accelerator1" onclick="buyAccelerator(0)">购买</button> 一阶时间加速器 数量: <span id="number-accelerator1">0</span> 价格: <span id="price-accelerator1">0</span> 秒 倍率: <span id="speed-accelerator1">0</span></p>
+			<p><button id="buy-accelerator2" onclick="buyAccelerator(1)">购买</button> 二阶时间加速器 数量: <span id="number-accelerator2">0</span> 价格: <span id="price-accelerator2">0</span> 秒 倍率: <span id="speed-accelerator2">0</span></p>
+			<p><button id="buy-accelerator3" onclick="buyAccelerator(2)">购买</button> 三阶时间加速器 数量: <span id="number-accelerator3">0</span> 价格: <span id="price-accelerator3">0</span> 秒 倍率: <span id="speed-accelerator3">0</span></p>
+			<p><button id="buy-accelerator4" onclick="buyAccelerator(3)">购买</button> 四阶时间加速器 数量: <span id="number-accelerator4">0</span> 价格: <span id="price-accelerator4">0</span> 秒 倍率: <span id="speed-accelerator4">0</span></p>
+			<p><button id="buy-accelerator5" onclick="buyAccelerator(4)">购买</button> 五阶时间加速器 数量: <span id="number-accelerator5">0</span> 价格: <span id="price-accelerator5">0</span> 秒 倍率: <span id="speed-accelerator5">0</span></p>
+			<p><button id="buy-accelerator6" onclick="buyAccelerator(5)">购买</button> 六阶时间加速器 数量: <span id="number-accelerator6">0</span> 价格: <span id="price-accelerator6">0</span> 秒 倍率: <span id="speed-accelerator6">0</span></p>
+			<p><button id="buy-accelerator7" onclick="buyAccelerator(6)">购买</button> 七阶时间加速器 数量: <span id="number-accelerator7">0</span> 价格: <span id="price-accelerator7">0</span> 秒 倍率: <span id="speed-accelerator7">0</span></p>
+			<p><button id="buy-accelerator8" onclick="buyAccelerator(7)">购买</button> 八阶时间加速器 数量: <span id="number-accelerator8">0</span> 价格: <span id="price-accelerator8">0</span> 秒 倍率: <span id="speed-accelerator8">0</span></p>
+		</div>
+		<div class="container" id="upgrades">
+            <p><button id="buy-upgrade1" onclick="buyUpgrade(0)">购买</button> 时间升级1 效果: 使时间可以提升加速器的倍率 价格: <span id="price-upgrade1">0</span> 秒</p>
+		</div>
+		<div class="container" id="options">
+			<p><button onclick="localStorage.setItem( 'CWIG3-player-data', saveData() )">保存存档</button></p>
+			<p><button onclick="readData( localStorage.getItem('CWIG3-player-data') )">读取存档</button></p>
 			<p>
-                <button onclick="document.getElementById('output-save-text').value = saveData()">以文本形式导出存档</button> 
-                (文本形式的存档将出现在下方文本框内)<br/>
-                <input type="textbox" id="output-save-text"></input>
-            </p>
+				<button onclick="document.getElementById('output-save-text').value = saveData()">以文本形式导出存档</button> 
+				(文本形式的存档将出现在下方文本框内)<br/>
+				<input type="textbox" id="output-save-text"></input>
+			</p>
 			<p>
-                <button onclick="readData( document.getElementById('input-save-text').value )">以文本形式导入存档</button> 
-                (请先在下方文本框内输入文本形式的存档)<br/>
-                <input type="textbox" id="input-save-text"></input> 
-            </p>
-        </div>
-        <div class="container" id="others">
-            <p>
-                CWIG3(CW's Incremental Game 3, CW 的第 3 个增量游戏), 又名时间增量.
-            </p>
+				<button onclick="readData( document.getElementById('input-save-text').value )">以文本形式导入存档</button> 
+				(请先在下方文本框内输入文本形式的存档)<br/>
+				<input type="textbox" id="input-save-text"></input> 
+			</p>
+		</div>
+		<div class="container" id="others">
+			<p>
+				CWIG3(CW's Incremental Game 3, CW 的第 3 个增量游戏), 又名时间增量.
+			</p>
 			<p>
 				更新日志: 
 				<button onclick="document.getElementById('update-data').hidden=false">展开</button>
 				<button onclick="document.getElementById('update-data').hidden=true">收起</button>
 			</p>
 			<div id="update-data">
+				<p>v3.2 2025.02.24 修复了一些bug</p>
+				<p>v3.1 2025.02.24 增加了每10s(现实时间)自动保存的功能</p>
+				<p>v3.0 2025.02.24 增加了升级</p>
+				<p>v2.5 2025.02.24 更新了UI</p>
+				<p>v2.4 2025.02.24 增加了网页加载时自动读取存档(如果有)的功能</p>
 				<p>v2.3 2025.02.23 修复了一个bug</p>
 				<p>v2.2 2025.02.23 增加了当时间不足以购买时, 购买按钮变为灰色的功能</p>
 				<p>v2.1 2025.02.23 增加了以文本形式导入/导出存档的功能</p>
@@ -73,7 +83,7 @@
 				<p>v0.1 2025.02.22 更新了UI</p>
 				<p>v0.0 2025.02.20 制作了初始的界面</p>
 			</div>
-        </div>
-    </div>
+		</div>
+	</div>
 </body>
 </html>

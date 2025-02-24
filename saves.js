@@ -9,6 +9,10 @@ function saveData() {
 		str = addStr(str, game.accelerators.price[i]);
 		str = addStr(str, game.accelerators.speed[i]);
 	}
+	for(let i = 0; i < game.upgrades.bought.length; i++) {
+		str = str + (game.upgrades.bought[i] ? 1 : 0);
+		str = addStr(str, game.upgrades.price[i]);
+	}
 	// console.log(str);
 	// console.log(btoa(str));
 	return btoa(str);
@@ -22,7 +26,7 @@ function readData(dataString) {
 		return;
 	}
 	const arr = atob( dataString ).split(' ');
-	if(arr.length < 6 * game.accelerators.number.length + 2) {
+	if(arr.length < consts.dataLength) {
 		alert('数据不合法!');
 		return;
 	}
@@ -32,4 +36,20 @@ function readData(dataString) {
 		game.accelerators.price[i] = readObj(arr, 6 * i + 4);
 		game.accelerators.speed[i] = readObj(arr, 6 * i + 6);
 	}
+	for(let i = 0; i < game.upgrades.bought.length; i++) {
+		game.upgrades.bought[i] = (parseInt(arr[50 + 3 * i]) == 1);
+		game.upgrades.price[i] = readObj(arr, 50 + 3 * i + 1);
+	}
+}
+function isValid() {
+	const dataString = localStorage.getItem('CWIG3-player-data');
+	if(dataString == null || dataString == '') {
+		return false;
+	}
+	const arr = atob( dataString ).split(' ');
+	if(arr.length < consts.dataLength) {
+		alert('数据不合法!');
+		return false;
+	}
+	return true;
 }
