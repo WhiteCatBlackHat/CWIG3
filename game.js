@@ -67,7 +67,6 @@ function init() {
 	consts = {
 		milisecondPerFrame: 40,
 		secondPerFrame: new bigNum(4, -2),
-		dataLength: 53,
         milisecondPerAutosave: 10000
 	};
 	if(isValid()) {

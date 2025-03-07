@@ -10,7 +10,7 @@ function saveData() {
 		str = addStr(str, game.accelerators.speed[i]);
 	}
 	for(let i = 0; i < game.upgrades.bought.length; i++) {
-		str = str + (game.upgrades.bought[i] ? 1 : 0);
+		str = str + (game.upgrades.bought[i] ? 1 : 0) + ' ';
 		str = addStr(str, game.upgrades.price[i]);
 	}
 	// console.log(str);
@@ -26,19 +26,33 @@ function readData(dataString) {
 		return;
 	}
 	const arr = atob( dataString ).split(' ');
-	if(arr.length < consts.dataLength) {
-		alert('数据不合法!');
+	if(arr.length < 1) {
 		return;
 	}
 	game.time = readObj(arr, 0);
 	for(let i = 0; i < game.accelerators.number.length; i++) {
+		if(arr.length < 6 * i + 4) {
+			return;
+		}
 		game.accelerators.number[i] = readObj(arr, 6 * i + 2);
+		if(arr.length < 6 * i + 6) {
+			return;
+		}
 		game.accelerators.price[i] = readObj(arr, 6 * i + 4);
+		if(arr.length < 6 * i + 8) {
+			return;
+		}
 		game.accelerators.speed[i] = readObj(arr, 6 * i + 6);
 	}
 	for(let i = 0; i < game.upgrades.bought.length; i++) {
+		if(arr.length < 52 + 3 * i) {
+			return;
+		}
 		game.upgrades.bought[i] = (parseInt(arr[50 + 3 * i]) == 1);
-		game.upgrades.price[i] = readObj(arr, 50 + 3 * i + 1);
+		if(arr.length < 54 + 3 * i) {
+			return;
+		}
+		game.upgrades.price[i] = readObj(arr, 51 + 3 * i);
 	}
 }
 function isValid() {
